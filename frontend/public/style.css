@@ -1,0 +1,54 @@
+body{
+    background-color: #BB8377;
+
+}
+.navbar{
+    display: inline-block;
+    background-color: #AE1313;
+    width: 100%;
+}
+
+a{
+    color: black;
+}
+
+a:link, a:visited {
+    color: black;
+}
+
+a:hover {
+    color: black;
+    background-color: #ad2424;
+}
+
+.navl{
+float: left;
+padding: 30px 25px;
+}
+
+.navr{
+float: right;
+padding: 30px 15px;
+border: 13px black;
+}
+
+#mcent{
+    padding: 0px;
+    width: 60%;
+    height: 100%;
+    display: block;
+    margin: auto;
+    max-width: fit-content;
+    
+}
+
+#logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+#search{
+    width: 80%;
+}
