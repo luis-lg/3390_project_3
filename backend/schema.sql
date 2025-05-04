@@ -1,7 +1,14 @@
+DROP TABLE IF EXISTS "comments" CASCADE;
+DROP TABLE IF EXISTS "messages" CASCADE;
+DROP TABLE IF EXISTS "rsvps" CASCADE;
+DROP TABLE IF EXISTS "events" CASCADE;
+DROP TABLE IF EXISTS "users" CASCADE;
+
 CREATE TABLE "users" (
   "id" serial PRIMARY KEY,
   "username" varchar(80) NOT NULL,
   "password" varchar(255) NOT NULL,
+  "email" varchar(200) NOT NULL,
   "created_at" timestamp DEFAULT CURRENT_TIMESTAMP
 );
 
