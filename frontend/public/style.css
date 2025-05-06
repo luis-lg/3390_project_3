@@ -24,7 +24,7 @@ a:hover {
 .navl{
 float: left;
 padding: 30px 25px;
-border: 3px solid black;
+border: 1px solid black;
 }
 
 .navr{
@@ -52,4 +52,95 @@ border: 13px black;
 
 #search{
     width: 80%;
+}
+
+div.userform{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 600px;
+    background: #f7e5b1;
+    padding-bottom: 30px;
+}
+
+div.formtitle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+div.formtext{
+    color: black;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+div.underline{
+    width: 180px;
+    height: 6px;
+    background: black;
+    border-radius: 11px;
+}
+
+div.inputs{
+    margin-top: 55px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+div.input{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 480px;
+    height: 65px;
+    background: #f2c6ab;
+    border-radius: 6px;
+}
+
+input{
+    height: 30px;
+    width: 480px;
+    background: #e0b89f;
+    border: none;
+    outline: none;
+    color: black;
+    font-size: 16;
+    border-radius: 6px;
+}
+
+div.forgotPass{
+    padding-left: 62px;
+    margin-top: 27px;
+    color: black;
+    font-size: 18px;
+}
+
+span{
+    color: gray;
+    cursor: pointer;
+}
+
+div.formsubmission{
+    display: flex;
+    gap: 30px;
+    margin: 60px auto;
+}
+
+div.submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 59px;
+    color: gray;
+    background: #f2c6ab;
+    border-radius: 50px;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
 }
