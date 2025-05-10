@@ -19,6 +19,7 @@ app.use(session({
 
 
 app.use('/api/users', require('./routes/userRoute'));
+app.use('/api/events',require('./routes/eventsRoute'));
 
 
 app.listen(port, () => {
