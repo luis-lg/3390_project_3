@@ -14,7 +14,6 @@ CREATE TABLE "users" (
 
 CREATE TABLE "comments" (
   "id" serial PRIMARY KEY,
-  "title" varchar,
   "body" text,
   "user_id" integer NOT NULL,
   "event_id" integer NOT NULL,
@@ -23,7 +22,8 @@ CREATE TABLE "comments" (
 
 CREATE TABLE "events" (
   "id" serial PRIMARY KEY,
-  "title" varchar NOT NULL,
+  "band" varchar NOT NULL,
+  "venue" varchar,
   "location" varchar,
   "date" date,
   "description" text

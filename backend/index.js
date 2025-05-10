@@ -3,13 +3,22 @@ const express = require('express');
 const cors = require('cors');
 const db  = require('./db'); 
 const app = express();
-const usersRoute = require('./routes/userRoute');
+const session   = require('express-session');
 
 const port = 5000;
 
 app.use(cors());
 app.use(express.json());
-app.use('/api/users', usersRoute);
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { httpOnly: true, maxAge: 86400000 }
+}));
+
+
+app.use('/api/users', require('./routes/userRoute'));
 
 
 app.listen(port, () => {

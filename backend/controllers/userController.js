@@ -30,3 +30,35 @@ exports.register = async (req, res) => {
     res.status(500).json({ error: "Failed to register user." });
   }
 };
+
+exports.login = async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+    if (!username || !password) {
+      return res
+        .status(400)
+        .json({ error: 'Username and password are required.' });
+    }
+
+    const user = await User.getUserbyName(username);
+
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) {
+      return res.status(401).json({ error: 'Invalid credentials.' });
+    }
+
+    req.session.userId = user.id;
+
+    res.json({
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      created_at: user.created_at,
+    });
+  } catch (err) {
+    if (err.message === 'User not found') {
+      return res.status(401).json({ error: 'Invalid credentials.' });
+    }
+    next(err);
+  }
+};

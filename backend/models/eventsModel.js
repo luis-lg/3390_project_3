@@ -1,10 +1,10 @@
 const db = require('../db');
 
-addevent = function(user) {
+addEvent = function(event) {
   return db.query(
-    `INSERT INTO users (title, location, data, description)
+    `INSERT INTO user (title, location, data, description)
      VALUES ($1, $2, $3) RETURNING *`,
-    [user.name, user.password, user.email]
+    [event.title, event.location, event.data, event.description]
   ).then(res => res.rows[0]);
 };
 
