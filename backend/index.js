@@ -19,9 +19,12 @@ app.use(session({
 
 
 app.use('/api/users', require('./routes/userRoute'));
+app.use('/api/users', require('./routes/messagesRoute'));
+
 app.use('/api/events',require('./routes/eventsRoute'));
 app.use('/api/events', require('./routes/rsvpRoute'));
 app.use('/api/events', require('./routes/commentsRoute')); 
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
