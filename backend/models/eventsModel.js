@@ -20,3 +20,16 @@ exports.getEventsByCity = function(city) {
     .then(res => res.rows);
 };
 
+exports.getEventById = function(id) {
+  return db
+    .query(
+      `SELECT id, band, venue, location, date, genre
+       FROM events
+       WHERE id = $1`,
+      [id]
+    )
+    .then(res => {
+      if (res.rows.length === 0) throw new Error('Event not found');
+      return res.rows[0];
+    });
+};

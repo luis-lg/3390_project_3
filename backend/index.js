@@ -22,6 +22,8 @@ app.use('/api/users', require('./routes/userRoute'));
 app.use('/api/events',require('./routes/eventsRoute'));
 
 
+
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
