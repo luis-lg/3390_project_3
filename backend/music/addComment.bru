@@ -1,0 +1,17 @@
+meta {
+  name: addComment
+  type: http
+  seq: 9
+}
+
+post {
+  url: http://localhost:5000/api/events/1/comments
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "body": "Does anyone know who is opening?."
+  }
+}
