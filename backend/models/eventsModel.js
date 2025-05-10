@@ -2,8 +2,7 @@ const db = require('../db');
 
 addEvent = function(event) {
   return db.query(
-    `INSERT INTO events (band, venue, locatiion, date, genre)
-     VALUES ($1, $2, $3) RETURNING *`,
+    `INSERT INTO events (band, venue, locatiion, date, genre) VALUES ($1, $2, $3) RETURNING *`,
     [event.band, event.venue, event.location, event.date, event.genre]
   ).then(res => res.rows[0]);
 };
@@ -12,8 +11,7 @@ exports.getEventsByCity = function(city) {
   return db
     .query(
       `SELECT id, band, venue, location, date, genre
-       FROM events
-       WHERE location ILIKE $1
+       FROM events WHERE location ILIKE $1
        ORDER BY date ASC`,
       [city]
     )
@@ -24,8 +22,7 @@ exports.getEventById = function(id) {
   return db
     .query(
       `SELECT id, band, venue, location, date, genre
-       FROM events
-       WHERE id = $1`,
+       FROM events WHERE id = $1`,
       [id]
     )
     .then(res => {

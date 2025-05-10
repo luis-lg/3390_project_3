@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const usersController = require('../controllers/userController');
 
-//public user routes
 router.post('/login', usersController.login);
 router.post('/register', usersController.register);
 

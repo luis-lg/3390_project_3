@@ -5,7 +5,7 @@ const requireAuth = require('../auth');
 
 // for all users
 router.get('/search', eventsController.searchByCity);
-//for logged in users
+//for logged in users to go to specific event page
 router.get('/:id', requireAuth, eventsController.getById);
 
 
