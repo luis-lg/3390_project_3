@@ -1,5 +1,6 @@
 <template>
   <nav class="navbar">
+    <router-link to="/profile" class="nav-item">Profile</router-link>
     <router-link to="/" class="nav-item">Home</router-link>
     <router-link to="/login" class="nav-item">Login</router-link>
     <button v-if="user" @click="logout" class="nav-item">Logout</button>

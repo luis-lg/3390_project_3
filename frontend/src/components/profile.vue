@@ -1,0 +1,69 @@
+<template>
+  <div class="profile">
+    <h2>Welcome, {{ user.username }}</h2>
+
+    <section>
+      <h3>Your RSVPs</h3>
+      <ul v-if="rsvps.length">
+        <li v-for="r in rsvps" :key="r.id">
+          {{ r.band }} @ {{ r.venue }} — {{ formatDate(r.date) }}
+        </li>
+      </ul>
+      <p v-else>You have no RSVPs yet.</p>
+    </section>
+
+    <section>
+      <h3>Your Messages</h3>
+      <ul v-if="messages.length">
+        <li v-for="m in messages" :key="m.user_id">
+          <router-link :to="{ name: 'Messages', params: { userId: m.user_id } }">
+            Chat with {{ m.username }} (last at {{ formatDate(m.last_at) }})
+          </router-link>
+        </li>
+      </ul>
+      <p v-else>No messages.</p>
+    </section>
+  </div>
+</template>
+
+<script setup>
+import { onMounted, ref } from 'vue'
+import axios from 'axios'
+
+// 1. Grab the already-fetched user from localStorage
+const user = ref(JSON.parse(localStorage.getItem('user')) || {})
+
+// 2. Prepare state for RSVPs + messages
+const rsvps = ref([])
+const messages = ref([])
+
+const formatDate = iso => new Date(iso).toLocaleString()
+
+onMounted(async () => {
+  // 3. Fetch RSVPs for this user
+  try {
+    // your endpoint: /api/events/:userId/rsvplist
+    const { data: rv } = await axios.get(`/events/${user.value.id}/rsvplist`)
+    rsvps.value = rv
+  } catch {
+    rsvps.value = []
+  }
+
+  // 4. Fetch inbox threads
+  try {
+    // if your route is /api/users/me/messages, keep this
+    const { data: msgs } = await axios.get('/users/me/messages')
+    messages.value = msgs
+  } catch {
+    messages.value = []
+  }
+})
+</script>
+
+<style scoped>
+.profile { padding: 1rem; }
+section { margin-bottom: 1.5rem; }
+h3 { margin-bottom: 0.5rem; }
+ul { list-style: none; padding: 0; }
+li + li { margin-top: 0.5rem; }
+</style>
