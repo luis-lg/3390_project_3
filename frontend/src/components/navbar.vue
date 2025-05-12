@@ -1,37 +1,61 @@
 <template>
-  <nav class="navbar">
-    <router-link to="/profile" class="nav-item">Profile</router-link>
-    <router-link to="/" class="nav-item">Home</router-link>
-    <router-link to="/login" class="nav-item">Login</router-link>
-    <button v-if="user" @click="logout" class="nav-item">Logout</button>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container-fluid">
+      <router-link class="navbar-brand" to="/">ConcertApp</router-link>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarContent"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/">Home</router-link>
+          </li>
+          <li class="nav-item" v-if="loggedIn">
+            <router-link class="nav-link" to="/profile">Profile</router-link>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li v-if="!loggedIn" class="nav-item">
+            <router-link class="nav-link" to="/login">Login</router-link>
+          </li>
+          <li v-else class="nav-item">
+            <button @click="logout" class="btn btn-outline-secondary">Logout</button>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import axios from 'axios'
 
-// grab current user from localStorage (or null)
-const user = ref(JSON.parse(localStorage.getItem('user')))
+// 1. Grab user from localStorage and make it reactive
+const stored = localStorage.getItem('user')
+const user = ref(stored ? JSON.parse(stored) : null)
+const loggedIn = ref(!!user.value)
+
+// 2. Router instance for navigation
 const router = useRouter()
 
-const logout = () => {
+// 3. Logout handler: call backend, clear client state, redirect
+async function logout() {
+  try {
+    await axios.post('/users/logout')
+  } catch (e) {
+    console.warn('Server‐side logout failed:', e)
+  }
   localStorage.removeItem('user')
   user.value = null
+  loggedIn.value = false
   router.push('/login')
 }
 </script>
-
-<style scoped>
-.navbar {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem;
-  background: #f2f2f2;
-}
-.nav-item {
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-</style>

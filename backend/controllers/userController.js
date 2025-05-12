@@ -62,3 +62,13 @@ exports.login = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.logout = (req, res, next) => {
+  // destroy session
+  req.session.destroy(err => {
+    if (err) return next(err);
+    // clear cooki
+    res.clearCookie('connect.sid');       
+    res.json({ message: 'Logged out successfully.' });
+  });
+};
