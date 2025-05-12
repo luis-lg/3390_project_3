@@ -1,6 +1,9 @@
+
 <template>
-  <NavBar />
-  <router-view />
+  <div class="container py-4">
+    <NavBar />
+    <router-view />
+  </div>
 </template>
 
 <script setup>

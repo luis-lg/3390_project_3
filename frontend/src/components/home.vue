@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <img :src="logo" alt="logo" class="logo" />
     <input
       v-model="city"
       @keyup.enter="search"
@@ -12,6 +13,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import logo from '../assets/showmelogo.png'
 
 const city = ref('')
 const router = useRouter()
@@ -22,3 +24,10 @@ const search = () => {
   router.push({ name: 'eventlist', query: { city: city.value } })
 }
 </script>
+
+<style scoped>
+.logo {
+  max-width: 500px;
+  height: auto;
+}
+</style>

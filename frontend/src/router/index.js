@@ -9,7 +9,7 @@ import Messages from '../components/messages.vue'
 
 
 const routes = [
-  { path: '/', name: 'Home', component: Home },
+  { path: '/', name: 'home', component: Home },
   { path: '/login', name: 'login', component: Login },
   { path: '/events', name: 'eventlist', component: EventList },
   { path: '/events/:id', name: 'eventdetail', component: EventDetail, props: true },
@@ -18,7 +18,19 @@ const routes = [
 
 ]
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes,
 })
+
+const publicPages = ['login', 'home', 'eventlist']
+router.beforeEach((to, from, next) => {
+  const authRequired = !publicPages.includes(to.name)
+  const loggedIn = !!localStorage.getItem('user')
+  if (authRequired && !loggedIn) {
+    return next({ name: 'Login' })
+  }
+  next()
+})
+
+export default router
