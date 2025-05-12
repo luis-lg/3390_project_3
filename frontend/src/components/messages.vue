@@ -1,6 +1,6 @@
 <template>
   <div class="messages">
-    <h2>Chat with {{ otherUser.username }}</h2>
+    <h2>Chat with {{otherUser.username}}</h2>
 
     <!-- Message list -->
     <div class="thread" v-if="thread.length">
