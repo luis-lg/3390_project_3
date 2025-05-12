@@ -26,19 +26,47 @@ const search = () => {
 </script>
 
 <style scoped>
- body{
-  background-color: #d8b09d;
-  background: #d8b09d;
+.home[data-v-f4211ad8]{
+  background-color: #fafafa;
 }
 
 .home{
-  display: flex;
-  flex-direction: column;
+  display: block;
+  flex-direction: center;
+  margin: auto;
   
 }
 .logo {
   max-width: 300px;
   height: auto;
-  margin: center;
+  margin: auto;
+  display: block;
 }
+
+input[data-v-f4211ad8]{
+  display: inline-block;
+  margin-top: 10px;
+  width: 50%;
+  margin-left: 70px;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+input[data-v-f4211ad8]:hover{
+  background-color: #fbfbfb;
+}
+
+button{
+  display: inline-block;
+  margin-top: 10px;
+  width: 20%;
+  margin: auto;
+  background-color: #cfa391;
+  border-radius: 5px;
+}
+
+button:hover{
+background:#e1c0b2; 
+}
+
 </style>
