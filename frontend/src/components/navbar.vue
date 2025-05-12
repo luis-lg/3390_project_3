@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d8b09d;">
     <div class="container-fluid">
-      <router-link class="navbar-brand" to="/">ConcertApp</router-link>
+      <router-link class="navbar-brand" to="/">ShowMe</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -59,3 +59,15 @@ async function logout() {
   router.push('/login')
 }
 </script>
+
+<style>
+  .navbar-expand-lg .navbar-nav .nav-link {
+  background: #cfa391;
+  border-radius: 5px;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link:hover{
+background: #e1c0b2;
+}
+
+</style>

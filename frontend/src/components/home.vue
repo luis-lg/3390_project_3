@@ -26,8 +26,19 @@ const search = () => {
 </script>
 
 <style scoped>
+ body{
+  background-color: #d8b09d;
+  background: #d8b09d;
+}
+
+.home{
+  display: flex;
+  flex-direction: column;
+  
+}
 .logo {
-  max-width: 500px;
+  max-width: 300px;
   height: auto;
+  margin: center;
 }
 </style>
