@@ -9,7 +9,6 @@ router.use(requireAuth);
 router.post('/:id/rsvp',    rsvpsController.rsvp);
 //undo rsvp and delete from db
 router.delete('/:id/rsvp',  rsvpsController.unrsvp);
-
 // rsvp list for event page
 router.get('/:id/rsvplist',    rsvpsController.listEventRsvps);
 

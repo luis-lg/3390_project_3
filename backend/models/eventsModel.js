@@ -10,7 +10,7 @@ addEvent = function(event) {
 exports.getEventsByCity = function(city) {
   return db
     .query(
-      `SELECT id, band, venue, location, date, genre
+      `SELECT id, band, venue, location, date, genre, image_url
        FROM events WHERE location ILIKE $1
        ORDER BY date ASC`,
       [city]
@@ -21,7 +21,7 @@ exports.getEventsByCity = function(city) {
 exports.getEventById = function(id) {
   return db
     .query(
-      `SELECT id, band, venue, location, date, genre
+      `SELECT id, band, venue, location, date, genre, image_url
        FROM events WHERE id = $1`,
       [id]
     )

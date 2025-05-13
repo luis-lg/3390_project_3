@@ -1,12 +1,15 @@
 <template>
   <div class="home">
     <img :src="logo" alt="logo" class="logo" />
+    <div class="search-overlay">
     <input
       v-model="city"
       @keyup.enter="search"
-      placeholder="Search by city (e.g. Bakersfield)"
+      placeholder="Search by city"
+      class="search-bar"
     />
     <button @click="search">Search</button>
+    </div>
   </div>
 </template>
 
@@ -28,6 +31,16 @@ const search = () => {
 <style scoped>
 .home[data-v-f4211ad8]{
   background-color: #fafafa;
+  position: relative;
+}
+.search-overlay {
+  position: absolute;
+  top: 75%;                /* tweak this % to move up/down over the logo */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;             /* make sure it sits on top */
 }
 
 .home{
@@ -37,7 +50,7 @@ const search = () => {
   
 }
 .logo {
-  max-width: 300px;
+  max-width: 575px;
   height: auto;
   margin: auto;
   display: block;

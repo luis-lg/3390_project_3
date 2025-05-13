@@ -30,28 +30,22 @@
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 
-// 1. Grab the already-fetched user from localStorage
 const user = ref(JSON.parse(localStorage.getItem('user')) || {})
 
-// 2. Prepare state for RSVPs + messages
 const rsvps = ref([])
 const messages = ref([])
 
 const formatDate = iso => new Date(iso).toLocaleString()
 
 onMounted(async () => {
-  // 3. Fetch RSVPs for this user
   try {
-    // your endpoint: /api/events/:userId/rsvplist
-    const { data: rv } = await axios.get(`/events/${user.value.id}/rsvplist`)
+    const { data: rv } = await axios.get(`/events/me/myrsvps`,)
     rsvps.value = rv
   } catch {
     rsvps.value = []
   }
 
-  // 4. Fetch inbox threads
   try {
-    // if your route is /api/users/me/messages, keep this
     const { data: msgs } = await axios.get('/users/me/messages')
     messages.value = msgs
   } catch {

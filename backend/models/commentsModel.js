@@ -12,10 +12,14 @@ exports.addComment = function({ user_id, event_id, body }) {
 
 exports.getEventComments = function(event_id) {
   return db.query(
-      `SELECT c.id, c.user_id, u.username, c.body, c.created_at FROM comments c
-       JOIN users u ON u.id = c.user_id 
-       WHERE c.event_id = $1 ORDER BY c.created_at ASC`,
-      [event_id]
+    `SELECT c.id,
+            c.body,
+            c.created_at,
+            u.username
+     FROM comments c
+     JOIN users   u ON u.id = c.user_id
+     WHERE c.event_id = $1 ORDER BY c.created_at ASC`,
+    [event_id]
     )
     .then(r => r.rows);
 };

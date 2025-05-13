@@ -10,7 +10,8 @@
     <p>{{ event.venue }} — {{ formatDate(event.date) }}</p>
     <p><small>{{ event.genre }}</small></p>
 
-    <button @click="rsvp">RSVP</button>
+    <button class="rsvpbutton" @click="rsvp">RSVP</button>
+    <button class="rsvpbutton" @click="unrsvp">Un-RSVP</button>
     <p v-if="rsvpMsg">{{ rsvpMsg }}</p>
 
     <h3>Comments</h3>
@@ -32,8 +33,6 @@
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
-import mech from '../assets/mech1.png'
-
 
 const route = useRoute()
 const event = ref([])
@@ -57,6 +56,14 @@ const rsvp = async () => {
     rsvpMsg.value = 'RSVP successful!'
   } catch {
     rsvpMsg.value = 'RSVP failed.'
+  }
+}
+const unrsvp = async () => {
+  try {
+    await axios.delete(`/events/${route.params.id}/rsvp`, { withCredentials: true })
+    rsvpMsg.value = 'RSVP removed.'
+  } catch {
+    rsvpMsg.value = 'Failed to remove RSVP.'
   }
 }
 
@@ -99,10 +106,26 @@ button {
   margin-top: 0.5rem;
 }
 
-form {
-  margin-top: 1rem;
+.rsvpbutton {
+  padding: 0.25rem 0.75rem;    /* less vertical & horizontal padding */
+  font-size: 0.9rem;           /* a smidge smaller text */
+  /* width:auto is default for buttons, so no need to override */
+  margin-right: 0.5rem;        /* small gap between them */
 }
 
+form {
+  display: flex;
+  justify-content: flex-start;  
+  width: 55%;                   /* same width as your ul, or whatever you need */
+  margin: 1rem 0 0 0;      
+  gap: 0.5rem; 
+  height: 2rem;         
+}
+form input {
+  flex: 1;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
 h2{
 text-decoration: underline;
 }

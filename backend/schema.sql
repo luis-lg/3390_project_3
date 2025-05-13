@@ -26,7 +26,8 @@ CREATE TABLE "events" (
   "venue" varchar,
   "location" varchar,
   "date" date,
-  "genre" text
+  "genre" text,
+  "image_url" text
 );
 
 CREATE TABLE "rsvps" (
