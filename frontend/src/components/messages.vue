@@ -2,7 +2,6 @@
   <div class="messages">
     <h2>Chat with {{otherUser.username}}</h2>
 
-    <!-- Message list -->
     <div class="thread" v-if="thread.length">
       <div 
         v-for="msg in thread" 
@@ -15,7 +14,6 @@
     </div>
     <p v-else>No messages yet. Say hello!</p>
 
-    <!-- Send new message -->
     <form @submit.prevent="sendMessage" class="send-form">
       <input 
         v-model="newMsg" 
@@ -32,35 +30,28 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
 
-// Current logged-in user from localStorage
 const user = ref(JSON.parse(localStorage.getItem('user') || '{}'))
 
-// Route param for the other user's ID
 const route = useRoute()
 const otherUserId = route.params.userId
 
-// State
-const otherUser = ref({ username: `User ${otherUserId}` })  // fallback title
+//state
+const otherUser = ref({ username: `User ${otherUserId}` }) 
 const thread = ref([])
 const newMsg = ref('')
 
-// Helper to format timestamps
 const formatDate = iso => new Date(iso).toLocaleString()
 
-// Fetch the other user’s info (if you have such an endpoint)
 const fetchOtherUser = async () => {
   try {
     const { data } = await axios.get(`/users/${otherUserId}`)
     otherUser.value = data
   } catch {
-    // keep fallback
   }
 }
 
-// Fetch the message thread between you and them
 const fetchThread = async () => {
   try {
-    // your backend route: GET /api/users/:userId/messages
     const { data } = await axios.get(`/users/${otherUserId}/messages`)
     thread.value = data
   } catch (e) {
@@ -68,14 +59,13 @@ const fetchThread = async () => {
   }
 }
 
-// Send a new message
 const sendMessage = async () => {
   if (!newMsg.value) return
   try {
     await axios.post(`/users/${otherUserId}/messages`, {
       body: newMsg.value
     })
-    // reload the thread to include the new message
+    //reload
     await fetchThread()
     newMsg.value = ''
   } catch (e) {

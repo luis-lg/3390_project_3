@@ -17,7 +17,7 @@
       <ul v-if="messages.length">
         <li v-for="m in messages" :key="m.user_id">
           <router-link :to="{ name: 'Messages', params: { userId: m.user_id } }">
-            Chat with {{ m.username }} (last at {{ formatDate(m.last_at) }})
+            Chat with {{ m.username }}
           </router-link>
         </li>
       </ul>

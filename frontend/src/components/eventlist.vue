@@ -1,27 +1,26 @@
 <template>
-  
-  <div class="event-list">
-    <h2>Results for "{{ city }}"</h2>
-    <div v-if="events.length">
-      <div
-        v-for="e in events"
-        :key="e.id"
-        class="card"
-      > 
-        <img
-          class="venue"
-          :src="'http://localhost:5000/images/' + e.image_url" 
-          alt="venue logo"
-        />
-        <router-link :to="{ name: 'eventdetail', params: { id: e.id } }">
-          <h3>{{ e.band }}</h3>
-          <p>{{ e.venue }} — {{ formatDate(e.date) }}</p>
-          <p><small>{{ e.genre }}</small></p>
-        </router-link>
-      </div>
+<div class="event-list">
+  <h2>Results for "{{ city }}"</h2>
+  <div v-if="events.length">
+    <div
+      v-for="e in events"
+      :key="e.id"
+      class="card"
+    > 
+      <img
+        class="venue"
+        :src="'http://localhost:5000/images/' + e.image_url" 
+        alt="venue logo"
+      />
+      <router-link :to="{ name: 'eventdetail', params: { id: e.id } }">
+        <h3>{{ e.band }}</h3>
+        <p>{{ e.venue }} — {{ formatDate(e.date) }}</p>
+        <p><small>{{ e.genre }}</small></p>
+      </router-link>
     </div>
-    <p v-else>No events found for "{{ city }}".</p>
   </div>
+  <p v-else>No events found for "{{ city }}".</p>
+</div>
 </template>
 
 <script setup>

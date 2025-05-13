@@ -107,19 +107,18 @@ button {
 }
 
 .rsvpbutton {
-  padding: 0.25rem 0.75rem;    /* less vertical & horizontal padding */
-  font-size: 0.9rem;           /* a smidge smaller text */
-  /* width:auto is default for buttons, so no need to override */
-  margin-right: 0.5rem;        /* small gap between them */
+  padding: 0.25rem 0.75rem; 
+  font-size: 0.9rem;  
+  margin-right: 0.5rem;  
 }
 
 form {
   display: flex;
   justify-content: flex-start;  
-  width: 55%;                   /* same width as your ul, or whatever you need */
-  margin: 1rem 0 0 0;      
-  gap: 0.5rem; 
-  height: 2rem;         
+  width: 55%;
+  margin: 1rem 0 0 0;
+  gap: 0.5rem;
+  height: 2rem;
 }
 form input {
   flex: 1;
