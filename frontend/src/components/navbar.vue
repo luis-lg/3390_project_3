@@ -25,7 +25,7 @@
             <router-link class="nav-link" to="/login">Login</router-link>
           </li>
           <li v-else class="nav-item">
-            <button @click="logout" class="btn btn-outline-secondary">Logout</button>
+            <button @click="logout" class="nav-link">Logout</button>
           </li>
         </ul>
       </div>
@@ -68,6 +68,26 @@ async function logout() {
 
 .navbar-expand-lg .navbar-nav .nav-link:hover{
 background: #e1c0b2;
+}
+
+li.nav-item{
+  padding-right: 10px;
+}
+
+button.nav-link{
+  width: 80px;
+}
+
+div.messages{
+  background-color: #fafafa;
+}
+
+div.bubble.incoming{
+  background-color: #aad8f1;
+}
+
+form.send-form input{
+  height: 30px;
 }
 
 </style>

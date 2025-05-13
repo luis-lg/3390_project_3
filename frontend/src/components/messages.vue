@@ -122,7 +122,11 @@ onMounted(async () => {
   gap: 0.5rem;
 }
 .send-form input {
-  flex: 1;
   padding: 0.5rem;
+  height: 60%;
+}
+
+.send-form button{
+  width: 60px;
 }
 </style>
