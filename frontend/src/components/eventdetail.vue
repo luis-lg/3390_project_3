@@ -1,5 +1,13 @@
 <template>
   <div class="detail">
+
+    
+    <img
+      class="placeholder"
+      :src="mech"
+      alt="Event placeholder"
+    />
+
     <h2>{{ event.band }} @ {{ event.venue }}</h2>
     <p id="date"><strong>Date:</strong> {{ formatDate(event.date) }}</p>
     <p id="gen"><strong>Genre:</strong> {{ event.genre }}</p>
@@ -25,6 +33,8 @@
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
+import mech from '../assets/mech1.png'
+
 
 const route = useRoute()
 const event = ref({})
