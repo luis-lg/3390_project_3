@@ -1,8 +1,8 @@
 <template>
   <div class="detail">
     <h2>{{ event.band }} @ {{ event.venue }}</h2>
-    <p><strong>Date:</strong> {{ formatDate(event.date) }}</p>
-    <p><strong>Genre:</strong> {{ event.genre }}</p>
+    <p id="date"><strong>Date:</strong> {{ formatDate(event.date) }}</p>
+    <p id="gen"><strong>Genre:</strong> {{ event.genre }}</p>
 
     <button @click="rsvp">RSVP</button>
     <p v-if="rsvpMsg">{{ rsvpMsg }}</p>
@@ -74,11 +74,42 @@ onMounted(async () => {
 <style scoped>
 .detail {
   padding: 1rem;
+  background-color: #fafafa;
 }
+
 button {
   margin-top: 0.5rem;
 }
+
 form {
   margin-top: 1rem;
 }
+
+h2{
+text-decoration: underline;
+}
+
+#date{
+  background-color: #bd8d7a;
+  width: 230px;
+  border-radius: 5px;
+}
+
+
+#gen{
+  background-color: #bd8d7a;
+  width: 100px;
+  border-radius: 5px;
+}
+
+h3{
+  text-decoration: underline;
+}
+
+ul{
+  border-radius: 5px;
+  background-color: #aad8f1;
+  width: 60%;
+}
+
 </style>

@@ -48,7 +48,7 @@ onMounted(fetchEvents)
   background-color: #fafafa;
 }
 .card {
-  display: inline-flex;
+  display: block;
   padding: 2px 10px;
   margin-right: 20px;
   margin-bottom: 0.5rem;
