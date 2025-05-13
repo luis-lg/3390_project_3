@@ -9,9 +9,9 @@
         class="card"
       > 
         <img
-          class="placeholder"
-          :src="mech"
-          alt="Event placeholder"
+          class="venue"
+          :src="'http://localhost:5000/images/' + e.image_url" 
+          alt="venue logo"
         />
         <router-link :to="{ name: 'eventdetail', params: { id: e.id } }">
           <h3>{{ e.band }}</h3>
@@ -28,7 +28,6 @@
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
-import mech from '../assets/mech1.png'
 
 const route = useRoute()
 const city = route.query.city || ''
@@ -61,7 +60,6 @@ onMounted(fetchEvents)
   margin-bottom: 0.5rem;
   border: 1px solid #d67c2e;
   background-color: #f1c4b1;
-
 }
 .card h3 {
   margin: 0;
@@ -77,13 +75,15 @@ a{
   color:black;
   text-decoration: none;
 }
-.placeholder {
-  width: 100px;
-  height: auto;      /* preserves aspect ratio */
+.venue{
+  width: 150px;
+  height: auto;
+  cursor: default !important;
 }
 .card img{
   float: right;
   margin-top: 10px;
   width: 130px;
+  opacity: 1 ;
 }
 </style>

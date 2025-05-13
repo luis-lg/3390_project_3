@@ -1,23 +1,22 @@
 <template>
-  <div class="detail">
+  <div v-if="event" class="detail">
 
-    
+    <h2>{{ event.band }} </h2>
     <img
-      class="placeholder"
-      :src="mech"
-      alt="Event placeholder"
+      class="venue"
+      :src="'http://localhost:5000/images/' + event.image_url"
+      alt="venue logo"
     />
-
-    <h2>{{ event.band }} @ {{ event.venue }}</h2>
-    <p id="date"><strong>Date:</strong> {{ formatDate(event.date) }}</p>
-    <p id="gen"><strong>Genre:</strong> {{ event.genre }}</p>
+    <p>{{ event.venue }} — {{ formatDate(event.date) }}</p>
+    <p><small>{{ event.genre }}</small></p>
 
     <button @click="rsvp">RSVP</button>
     <p v-if="rsvpMsg">{{ rsvpMsg }}</p>
 
     <h3>Comments</h3>
     <ul>
-      <li v-for="c in comments" :key="c.id">
+      <li v-for="c in comments" :key="c.id" class = "comments">
+        <strong>{{ c.username }}</strong>:
         {{ c.body }} — <em>{{ formatDate(c.created_at) }}</em>
       </li>
     </ul>
@@ -37,7 +36,7 @@ import mech from '../assets/mech1.png'
 
 
 const route = useRoute()
-const event = ref({})
+const event = ref([])
 const comments = ref([])
 const newComment = ref('')
 const rsvpMsg = ref('')
@@ -91,6 +90,9 @@ onMounted(async () => {
   float: right;
   width: 40%;
   height: 20%;
+  width: 250px;
+  height: auto;
+  cursor: default !important;
 }
 
 button {
@@ -126,6 +128,11 @@ ul{
   border-radius: 5px;
   background-color: #aad8f1;
   width: 55%;
+}
+.comments{
+  border-bottom: 1px solid #000; 
+  padding-bottom: 0.5rem;    
+  margin-bottom: 0.5rem;  
 }
 
 </style>
