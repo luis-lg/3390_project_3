@@ -81,4 +81,9 @@ a{
   width: 100px;
   height: auto;      /* preserves aspect ratio */
 }
+.card img{
+  float: right;
+  margin-top: 10px;
+  width: 130px;
+}
 </style>
