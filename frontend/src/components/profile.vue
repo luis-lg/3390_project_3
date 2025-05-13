@@ -61,9 +61,28 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.profile { padding: 1rem; }
+
+.profile { 
+  padding: 1rem;
+  display: flex;
+  flex-direction: column; 
+  text-align: center;
+  background-color: #fafafa;
+}
+
 section { margin-bottom: 1.5rem; }
-h3 { margin-bottom: 0.5rem; }
+h3 { 
+  margin-bottom: 0.5rem;
+  text-decoration: underline;
+}
+
 ul { list-style: none; padding: 0; }
 li + li { margin-top: 0.5rem; }
+
+a{
+border-radius: 5px;
+background-color: #f8e0c4;
+
+}
+
 </style>
