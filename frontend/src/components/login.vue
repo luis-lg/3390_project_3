@@ -31,7 +31,7 @@ const doLogin = async () => {
       password: password.value
     })
     localStorage.setItem('user', JSON.stringify(res.data))
-    router.push('/')  //redir home
+    window.location.href = '/'
   } catch {
     error.value = 'Login failed'
   }
