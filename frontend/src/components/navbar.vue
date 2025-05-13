@@ -61,6 +61,9 @@ async function logout() {
 </script>
 
 <style>
+body{
+  background-color: #fafafa;
+}
   .navbar-expand-lg .navbar-nav .nav-link {
   background: #cfa391;
   border-radius: 5px;

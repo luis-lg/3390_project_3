@@ -87,6 +87,12 @@ onMounted(async () => {
   background-color: #fafafa;
 }
 
+.detail img{
+  float: right;
+  width: 40%;
+  height: 20%;
+}
+
 button {
   margin-top: 0.5rem;
 }
@@ -119,7 +125,7 @@ h3{
 ul{
   border-radius: 5px;
   background-color: #aad8f1;
-  width: 60%;
+  width: 55%;
 }
 
 </style>
